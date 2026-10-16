@@ -153,7 +153,7 @@ def riassunto(giorni: int = 7) -> str:
              f"giri: {len(recenti)} · movimenti: {len(mosse)}"]
     for r in mosse[-10:]:
         testo.append(f"· {r['data']} {r['simbolo']} {r['motivo']} "
-                     f"{r['peso_prima']:.0%}→{r['peso']:.0%}")
+                     f"{r['peso_prima']:.0%}->{r['peso']:.0%}")
     if not mosse:
         testo.append("nessun movimento: posizioni invariate")
     testo.append(f"\ntotale decisioni registrate: {len(righe)}")

@@ -53,7 +53,7 @@ def cmd_misura(a) -> None:
                           f"| b&h {e_bh.sharpe:+.2f} | p {perm['p']:.3f}")
     print("\n".join(stampa))
     if righe:
-        print("\nrapporto →", genera(righe, a.rapporto))
+        print("\nrapporto ->", genera(righe, a.rapporto))
 
 
 def cmd_carta(a) -> None:

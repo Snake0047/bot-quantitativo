@@ -25,7 +25,7 @@ def principale() -> None:
     if a.cmd == "giro":
         fatte = giro.esegui(a.simboli, a.strategia, a.forza, a.sempre)
         for d in fatte:
-            print(f"{d.simbolo} {d.motivo} {d.peso_prima:.0%}→{d.peso:.0%}")
+            print(f"{d.simbolo} {d.motivo} {d.peso_prima:.0%}->{d.peso:.0%}")
         if not fatte:
             print("niente da fare: barra già elaborata")
     elif a.cmd == "riassunto":

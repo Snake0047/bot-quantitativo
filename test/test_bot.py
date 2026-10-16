@@ -249,3 +249,52 @@ def test_messaggio_dichiara_che_e_carta():
     d = Decisione("SPY", "2026-10-16", 700.0, 1.0, 0.0, {"veloce": 20}, "trend", "ENTRA")
     m = messaggio(d)
     assert "nessun ordine reale" in m and "SPY" in m and "ENTRA" in m
+
+
+# --- output a terminale -------------------------------------------------
+
+CP = "cp1252"   # la codifica della console italiana di Windows
+
+
+def _stringhe_nei_print(modulo: str) -> list:
+    """Ogni stringa costante che finisce dentro una print() del modulo."""
+    import ast
+    import io
+    albero = ast.parse(io.open(modulo, encoding="utf-8").read())
+    trovate = []
+    for n in ast.walk(albero):
+        if isinstance(n, ast.Call) and getattr(n.func, "id", "") == "print":
+            for s in ast.walk(n):
+                if isinstance(s, ast.Constant) and isinstance(s.value, str):
+                    trovate.append(s.value)
+    return trovate
+
+
+@pytest.mark.parametrize("modulo", ["bot/cli.py", "bot/__main__.py", "misura.py"])
+def test_print_codificabili_su_console_windows(modulo):
+    """Un carattere fuori cp1252 in una print fa esplodere il programma."""
+    for s in _stringhe_nei_print(modulo):
+        s.encode(CP)
+
+
+def test_riassunto_codificabile_su_console_windows(tmp_path, monkeypatch):
+    """riassunto() va su Telegram ma anche in console: deve restare stampabile."""
+    import json
+    from bot import giro
+    d = tmp_path / "diario.jsonl"
+    riga = {"quando": pd.Timestamp.now(tz="UTC").isoformat(), "data": "2026-10-16",
+            "simbolo": "SPY", "motivo": "ENTRA", "peso_prima": 0.0, "peso": 1.0}
+    d.write_text(json.dumps(riga) + "\n", encoding="utf-8")
+    monkeypatch.setattr(giro, "DIARIO", d)
+    giro.riassunto(7).encode(CP)
+
+
+def test_fallback_console_non_esplode_su_cp1252(monkeypatch):
+    """Senza token manda() stampa il messaggio: non deve morire sull'encoding."""
+    import io
+    import sys
+    from bot import avvisi
+    monkeypatch.delenv("TELEGRAM_TOKEN", raising=False)
+    monkeypatch.delenv("TELEGRAM_CHAT_ID", raising=False)
+    monkeypatch.setattr(sys, "stdout", io.TextIOWrapper(io.BytesIO(), encoding=CP))
+    assert avvisi.manda("⚠️ SPY 0% → 100%") is False

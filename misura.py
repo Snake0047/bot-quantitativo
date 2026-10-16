@@ -44,7 +44,7 @@ for sym in sys.argv[1:] or ["SPY"]:
     px = serie(sym)
     s, b = esegui(px, segnale(px)), bh(px)
     v, m, p95, p = permutazione(px, 400)
-    print(f"\n=== {sym}  ({px.index[0].date()} → {px.index[-1].date()}, {len(px)} barre) ===")
+    print(f"\n=== {sym}  ({px.index[0].date()} -> {px.index[-1].date()}, {len(px)} barre) ===")
     print(f"  strategia   sharpe {s['sharpe']:+.2f}  cagr {s['cagr']*100:+.1f}%  maxDD {s['dd']*100:.1f}%  dentro {s['dentro']*100:.0f}%  x{s['finale']:.1f}")
     print(f"  compra&tieni sharpe {b['sharpe']:+.2f}  cagr {b['cagr']*100:+.1f}%  maxDD {b['dd']*100:.1f}%  dentro 100%  x{b['finale']:.1f}")
     print(f"  permutazione: vero {v:+.2f} | rumore medio {m:+.2f} | rumore p95 {p95:+.2f} | p = {p:.3f}")

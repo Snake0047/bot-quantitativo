@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import json
 import os
+import sys
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -20,6 +21,17 @@ def configurato() -> bool:
     return bool(os.getenv("TELEGRAM_TOKEN") and os.getenv("TELEGRAM_CHAT_ID"))
 
 
+def _console(testo: str) -> str:
+    """Il testo di Telegram puo' finire in console quando il token manca.
+
+    La console italiana di Windows e' in cp1252: le frecce e le emoji non
+    esistono li' dentro e farebbero esplodere la print. Su Telegram il
+    messaggio resta intatto: qui si ripulisce solo la copia stampata.
+    """
+    cod = getattr(sys.stdout, "encoding", None) or "ascii"
+    return testo.encode(cod, "replace").decode(cod, "replace")
+
+
 def _tronca(testo: str) -> str:
     return testo if len(testo) <= LIMITE else testo[: LIMITE - 3] + "..."
 
@@ -28,7 +40,7 @@ def manda(testo: str, silenzioso: bool = False) -> bool:
     """True se Telegram ha accettato il messaggio. Non solleva mai."""
     token, chat = os.getenv("TELEGRAM_TOKEN"), os.getenv("TELEGRAM_CHAT_ID")
     if not (token and chat):
-        print(f"[telegram non configurato]\n{testo}")
+        print(_console(f"[telegram non configurato]\n{testo}"))
         return False
     dati = urllib.parse.urlencode({
         "chat_id": chat,
