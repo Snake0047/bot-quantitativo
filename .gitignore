@@ -5,6 +5,8 @@ rapporto.html
 .env
 # le serie scaricate si ricostruiscono: non si versionano
 dati/*.csv
+# il registro del conto di carta della CLI e' locale: non e' il campione
+dati/registro.jsonl
 # il diario e lo stato SÌ: sono il campione, e su GitHub Actions
 # sono l'unico modo per non perdere la memoria fra un giro e l'altro
 !dati/diario.jsonl
