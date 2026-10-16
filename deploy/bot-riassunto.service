@@ -1,0 +1,13 @@
+[Unit]
+Description=bot — riassunto settimanale
+
+[Service]
+Type=oneshot
+User=bot
+WorkingDirectory=/opt/bot
+EnvironmentFile=/etc/bot.env
+ExecStart=/opt/bot/.venv/bin/python -m bot riassunto --giorni 7
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/bot/dati

@@ -1,0 +1,11 @@
+__pycache__/
+.pytest_cache/
+.venv/
+rapporto.html
+.env
+# le serie scaricate si ricostruiscono: non si versionano
+dati/*.csv
+# il diario e lo stato SÌ: sono il campione, e su GitHub Actions
+# sono l'unico modo per non perdere la memoria fra un giro e l'altro
+!dati/diario.jsonl
+!dati/stato.json

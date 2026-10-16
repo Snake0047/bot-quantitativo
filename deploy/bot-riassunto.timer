@@ -1,0 +1,9 @@
+[Unit]
+Description=bot — riassunto ogni domenica
+
+[Timer]
+OnCalendar=Sun 19:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target

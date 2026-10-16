@@ -1,0 +1,11 @@
+[Unit]
+Description=bot — una volta al giorno dopo la chiusura USA
+
+[Timer]
+# 23:30 Europe/Rome: i mercati USA hanno chiuso, i dati del giorno ci sono
+OnCalendar=Mon..Fri 23:30
+Persistent=true
+RandomizedDelaySec=600
+
+[Install]
+WantedBy=timers.target

@@ -1,0 +1,2 @@
+-r requisiti.txt
+pytest>=8.3

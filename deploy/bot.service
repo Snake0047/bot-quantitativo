@@ -1,0 +1,28 @@
+[Unit]
+Description=bot — giro giornaliero in carta
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=bot
+WorkingDirectory=/opt/bot
+EnvironmentFile=/etc/bot.env
+ExecStart=/opt/bot/.venv/bin/python -m bot giro --simboli SPY QQQ
+TimeoutStartSec=600
+
+# il bot non ha bisogno di quasi niente: non glielo diamo
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/bot/dati
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+LockPersonality=true
+MemoryMax=512M
+
+[Install]
+WantedBy=multi-user.target
