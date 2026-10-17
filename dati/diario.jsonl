@@ -1,0 +1,2 @@
+{"quando": "2026-10-17T00:47:05.238934+00:00", "simbolo": "SPY", "data": "2026-10-15", "prezzo": 771.7899780273438, "peso": 1.0, "peso_prima": 0.0, "parametri": {"veloce": 10, "lenta": 150}, "strategia": "trend", "motivo": "ENTRA"}
+{"quando": "2026-10-17T00:47:05.618246+00:00", "simbolo": "QQQ", "data": "2026-10-15", "prezzo": 728.0, "peso": 0.8704, "peso_prima": 0.0, "parametri": {"veloce": 20, "lenta": 100}, "strategia": "trend", "motivo": "ENTRA"}
