@@ -4,3 +4,5 @@
 {"quando": "2026-10-20T01:17:24.937112+00:00", "simbolo": "QQQ", "data": "2026-10-16", "prezzo": 709.7999877929688, "peso": 0.0, "peso_prima": 0.8704, "parametri": {"veloce": 20, "lenta": 100}, "strategia": "trend", "motivo": "ESCE"}
 {"quando": "2026-10-21T00:59:12.236018+00:00", "simbolo": "SPY", "data": "2026-10-19", "prezzo": 766.47998046875, "peso": 1.0, "peso_prima": 1.0, "parametri": {"veloce": 10, "lenta": 150}, "strategia": "trend", "motivo": "FERMO"}
 {"quando": "2026-10-21T00:59:12.740617+00:00", "simbolo": "QQQ", "data": "2026-10-19", "prezzo": 718.3599853515625, "peso": 0.0, "peso_prima": 0.0, "parametri": {"veloce": 20, "lenta": 100}, "strategia": "trend", "motivo": "FERMO"}
+{"quando": "2026-10-22T00:54:57.562675+00:00", "simbolo": "SPY", "data": "2026-10-20", "prezzo": 769.0499877929688, "peso": 1.0, "peso_prima": 1.0, "parametri": {"veloce": 10, "lenta": 150}, "strategia": "trend", "motivo": "FERMO"}
+{"quando": "2026-10-22T00:54:57.974392+00:00", "simbolo": "QQQ", "data": "2026-10-20", "prezzo": 717.6300048828125, "peso": 0.0, "peso_prima": 0.0, "parametri": {"veloce": 20, "lenta": 100}, "strategia": "trend", "motivo": "FERMO"}
