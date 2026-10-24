@@ -1,22 +1,22 @@
 {
   "SPY:trend": {
-    "ultima_barra": "2026-10-21",
+    "ultima_barra": "2026-10-22",
     "peso": 1.0,
     "parametri": {
       "veloce": 10,
       "lenta": 150
     },
-    "giri_da_calibrazione": 5,
+    "giri_da_calibrazione": 6,
     "picco": 1.0
   },
   "QQQ:trend": {
-    "ultima_barra": "2026-10-21",
-    "peso": 0.9712693616239985,
+    "ultima_barra": "2026-10-22",
+    "peso": 0.0,
     "parametri": {
       "veloce": 20,
       "lenta": 100
     },
-    "giri_da_calibrazione": 5,
+    "giri_da_calibrazione": 6,
     "picco": 1.0
   }
 }
